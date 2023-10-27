@@ -1,0 +1,54 @@
+package com.example.petshop.service;
+
+import com.example.petshop.model.Pet;
+import com.example.petshop.model.PetType;
+import com.example.petshop.repository.PetRepository;
+import com.example.petshop.web.dto.PetCreationDto;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.List;
+
+
+@Service
+@AllArgsConstructor
+public class PetService {
+    private final PetRepository petRepository;
+
+    public void createPets(List<PetCreationDto> petCreationDtoList) {
+        int numberOfAllowedPets = 20 - petRepository.findAll().size();
+        List<PetCreationDto> pet20 = petCreationDtoList.subList(0, Math.min(petCreationDtoList.size(), numberOfAllowedPets));
+        pet20.forEach(el ->
+                createPet(el));
+    }
+
+    public void createPet(PetCreationDto petCreationDto) {
+        Pet pet = null;
+        if (petCreationDto.getType().equals(PetType.CAT)) {
+            Integer fullPrice = calculatePrice(petCreationDto.getDateOfBirth());
+            pet = new Pet(petCreationDto.getName(), petCreationDto.getType(), petCreationDto.getDescription(), petCreationDto.getDateOfBirth(), fullPrice);
+        } else {
+            Integer fullPrice = calculateDogPrice(petCreationDto.getDateOfBirth(), petCreationDto.getRating());
+            pet = new Pet(petCreationDto.getName(), petCreationDto.getType(), petCreationDto.getDescription(), petCreationDto.getDateOfBirth(), fullPrice, petCreationDto.getRating());
+
+        }
+        petRepository.save(pet);
+    }
+
+    public Integer calculatePrice(LocalDate dateOf) {
+        LocalDate currentDate = LocalDate.now();
+        Period period = Period.between(dateOf, currentDate);
+        return period.getYears();
+    }
+
+    public Integer calculateDogPrice(LocalDate dateOf, Integer rating) {
+        return calculatePrice(dateOf) + rating;
+    }
+
+    public List<Pet> listAll() {
+        return petRepository.findAll();
+    }
+
+}
