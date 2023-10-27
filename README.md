@@ -8,7 +8,7 @@ The application works by sending HTTP Get and Post requests to the following end
     - <b>localhost:8080/pet</b>: This is a Post request for creating pets in the pet store. <br>
     - <b>localhost:8080/user</b>: This is a Post request for creating users in the pet store. <br>
     - <b>localhost:8080/user/buy</b>: This is a Get request for retrieving a list of strings, which are sentences describing which user bought which pet. <br>
-    - <b>localhost:8080/history-log</b>: This is GET request for the Bonus requirement - to retrieve the history of all the buy commands. <br>
+    - <b>localhost:8080/history-log</b>: This is GET request for retrieving the history of all the buy commands. <br>
     
 There is a Postman collection with HTTP requests attached to this repository for testing the application.
 
