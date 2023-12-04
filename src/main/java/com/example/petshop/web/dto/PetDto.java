@@ -1,5 +1,6 @@
 package com.example.petshop.web.dto;
 
+import com.example.petshop.model.PetType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,8 +12,19 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Getter
 @Setter
-public class TransactionHistoryLogDto {
-    LocalDate dateOfPurchase;
-    Integer successfulTransactions;
-    Integer unsuccessfulTransactions;
+public class PetDto {
+    Long Id;
+
+    String name;
+
+    PetType type;
+
+    String description;
+
+    LocalDate dateOfBirth;
+
+    Integer price;
+
+    Integer rating;
+    UserReadingDto owner;
 }

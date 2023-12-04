@@ -5,14 +5,18 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class TransactionHistoryLogDto {
-    LocalDate dateOfPurchase;
-    Integer successfulTransactions;
-    Integer unsuccessfulTransactions;
+public class UserReadingDto {
+    Long Id;
+
+    String firstName;
+
+    String lastName;
+
+    String email;
+
+    Float budget;
 }

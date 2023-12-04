@@ -51,11 +51,11 @@ public class PetService {
     public List<PetDto> listAll() {
         return petRepository.findAll().stream()
                 .map(pet ->
-                        new PetDto(pet.getId(), pet.getName(),pet.getType(), pet.getDescription(),
+                        new PetDto(pet.getId(), pet.getName(), pet.getType(), pet.getDescription(),
                                 pet.getDateOfBirth(), pet.getPrice(), pet.getRating(),
-                        pet.getOwner() != null ? new UserReadingDto(pet.getOwner().getId(), pet.getOwner().getFirstName(),
-                                pet.getOwner().getLastName(), pet.getOwner().getEmail(),
-                                pet.getOwner().getBudget()) : null)).toList();
+                                pet.getOwner() != null ? new UserReadingDto(pet.getOwner().getId(), pet.getOwner().getFirstName(),
+                                        pet.getOwner().getLastName(), pet.getOwner().getEmail(),
+                                        pet.getOwner().getBudget()) : null)).toList();
 
     }
 

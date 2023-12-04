@@ -18,7 +18,7 @@ public class TransactionLogService {
 
         List<TransactionHistoryLog> transactionHistoryLogs = transactionHistoryLogRepository.findAll();
         return transactionHistoryLogs.stream().map(desiredOutput ->
-                new TransactionHistoryLogDto(desiredOutput.getDateOfPurchase(),desiredOutput.getSuccessfulTransactions(),desiredOutput.getUnsuccessfulTransactions())).toList();
+                new TransactionHistoryLogDto(desiredOutput.getDateOfPurchase(), desiredOutput.getSuccessfulTransactions(), desiredOutput.getUnsuccessfulTransactions())).toList();
 
     }
 }
