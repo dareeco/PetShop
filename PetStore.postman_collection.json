@@ -1,0 +1,118 @@
+{
+	"info": {
+		"_postman_id": "8512f6ad-2ec0-411b-90fd-57e367433707",
+		"name": "PetStore",
+		"description": "This is Post request for creating pets in the pet store",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15083895"
+	},
+	"item": [
+		{
+			"name": "localhost:8080/user/buy",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/user/buy",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"buy"
+					]
+				},
+				"description": "This is Get request for retrieving list of sentences for who bought which pet."
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userCreationDtos\": [{\r\n        \"firstName\":\"Slavko\",\r\n        \"lastName\":\"Slavkovski\",\r\n        \"email\":\"Slavko.slavkovski@test.com\",\r\n        \"budget\":10.0\r\n    },\r\n    {\r\n        \"firstName\":\"Trajko\",\r\n        \"lastName\":\"Trajkovski\",\r\n        \"email\":\"Trajko.Trajkovski@test.com\",\r\n        \"budget\":5.0\r\n    },\r\n    {\r\n        \"firstName\":\"Petko\",\r\n        \"lastName\":\"Petkovski\",\r\n        \"email\":\"Petko.Petkovski@test.com\",\r\n        \"budget\":3.0\r\n    },\r\n    {\r\n      \"firstName\":\"Nikola\",\r\n        \"lastName\":\"Nikolovski\",\r\n        \"email\":\"Nikola.Nikolovski@test.com\",\r\n        \"budget\":15.0  \r\n    },\r\n    {\r\n            \"firstName\": \"Maja\",\r\n            \"lastName\": \"Majovska\",\r\n            \"email\": \"Maja.majovska@test.com\",\r\n            \"budget\": 75.0\r\n    },\r\n    {\r\n            \"firstName\": \"Ivan\",\r\n            \"lastName\": \"Ivanovski\",\r\n            \"email\": \"Ivan.ivanovski@test.com\",\r\n            \"budget\": 12.0\r\n    },\r\n        {\r\n            \"firstName\": \"Elena\",\r\n            \"lastName\": \"Elenovska\",\r\n            \"email\": \"Elena.elenovska@test.com\",\r\n            \"budget\": 90.0\r\n        },\r\n        {\r\n            \"firstName\": \"Viktor\",\r\n            \"lastName\": \"Viktorovski\",\r\n            \"email\": \"Viktor.viktorovski@test.com\",\r\n            \"budget\": 6.0\r\n        },\r\n         {\r\n            \"firstName\": \"Sandra\",\r\n            \"lastName\": \"Sandrovska\",\r\n            \"email\": \"Sandra.sandrovska@test.com\",\r\n            \"budget\": 8.0\r\n        },\r\n        {\r\n        \"firstName\":\"Zhare\",\r\n        \"lastName\":\"Zharevski\",\r\n        \"email\":\"Zhare.Zharevski@test.com\",\r\n        \"budget\":8.0\r\n        },\r\n        {\r\n            \"firstName\": \"Liam\",\r\n            \"lastName\": \"Johnson\",\r\n            \"email\": \"liam.johnson@example.com\",\r\n            \"budget\": 800.0\r\n        }]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/user",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user"
+					]
+				},
+				"description": "This is Post request for creating users in the pet store"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/pet",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"petCreationDtos\": [\r\n        {\r\n            \"name\": \"Whiskers\",\r\n            \"type\": \"CAT\",\r\n            \"description\": \"A sleek black cat with long whiskers\",\r\n            \"dateOfBirth\": \"2014-05-22\"\r\n        },\r\n        {\r\n            \"name\": \"Rover\",\r\n            \"type\": \"DOG\",\r\n            \"description\": \"Energetic golden retriever\",\r\n            \"dateOfBirth\": \"2016-08-17\",\r\n            \"rating\": 8\r\n        },\r\n        {\r\n            \"name\": \"Mittens\",\r\n            \"type\": \"CAT\",\r\n            \"description\": \"A white cat with fluffy mittens\",\r\n            \"dateOfBirth\": \"2015-12-10\"\r\n        },\r\n        {\r\n            \"name\": \"Buddy\",\r\n            \"type\": \"DOG\",\r\n            \"description\": \"Loyal and friendly Labrador\",\r\n            \"dateOfBirth\": \"2017-06-03\",\r\n            \"rating\": 9\r\n        },\r\n        {\r\n            \"name\": \"Whiskers Jr.\",\r\n            \"type\": \"CAT\",\r\n            \"description\": \"The playful offspring of Whiskers\",\r\n            \"dateOfBirth\": \"2018-04-15\"\r\n        },\r\n        {\r\n            \"name\": \"Molly\",\r\n            \"type\": \"DOG\",\r\n            \"description\": \"Cute and fluffy poodle\",\r\n            \"dateOfBirth\": \"2015-09-28\",\r\n            \"rating\": 7\r\n        },\r\n        {\r\n            \"name\": \"Felix\",\r\n            \"type\": \"CAT\",\r\n            \"description\": \"Adventurous tuxedo cat\",\r\n            \"dateOfBirth\": \"2014-11-20\"\r\n        },\r\n        {\r\n            \"name\": \"Daisy\",\r\n            \"type\": \"DOG\",\r\n            \"description\": \"Playful beagle with a wagging tail\",\r\n            \"dateOfBirth\": \"2016-03-12\",\r\n            \"rating\": 6\r\n        },\r\n        {\r\n            \"name\": \"Leo\",\r\n            \"type\": \"CAT\",\r\n            \"description\": \"Regal and mysterious tabby\",\r\n            \"dateOfBirth\": \"2012-07-25\"\r\n        },\r\n        {\r\n            \"name\": \"Rocky\",\r\n            \"type\": \"DOG\",\r\n            \"description\": \"Strong and adventurous boxer\",\r\n            \"dateOfBirth\": \"2014-09-19\",\r\n            \"rating\": 5\r\n        },\r\n        {\r\n            \"name\": \"Luna\",\r\n            \"type\": \"CAT\",\r\n            \"description\": \"Graceful and elegant Siamese cat\",\r\n            \"dateOfBirth\": \"2013-04-30\"\r\n        },\r\n        {\r\n            \"name\": \"Max\",\r\n            \"type\": \"DOG\",\r\n            \"description\": \"Intelligent and obedient border collie\",\r\n            \"dateOfBirth\": \"2012-12-05\",\r\n            \"rating\": 7\r\n        },\r\n        {\r\n            \"name\": \"Oreo\",\r\n            \"type\": \"CAT\",\r\n            \"description\": \"Black and white cat with a sweet personality\",\r\n            \"dateOfBirth\": \"2016-06-14\"\r\n        },\r\n        {\r\n            \"name\": \"Bailey\",\r\n            \"type\": \"DOG\",\r\n            \"description\": \"Friendly and loving golden retriever\",\r\n            \"dateOfBirth\": \"2013-09-02\",\r\n            \"rating\": 4\r\n        },\r\n        {\r\n            \"name\": \"Simba\",\r\n            \"type\": \"CAT\",\r\n            \"description\": \"Clever and curious orange tabby\",\r\n            \"dateOfBirth\": \"2015-02-08\"\r\n        },\r\n        {\r\n            \"name\": \"Coco\",\r\n            \"type\": \"DOG\",\r\n            \"description\": \"Charming and playful cocker spaniel\",\r\n            \"dateOfBirth\": \"2013-11-14\",\r\n            \"rating\": 9\r\n        },\r\n        {\r\n            \"name\": \"Milo\",\r\n            \"type\": \"CAT\",\r\n            \"description\": \"Affectionate and cuddly Persian cat\",\r\n            \"dateOfBirth\": \"2017-07-21\"\r\n        },\r\n        {\r\n            \"name\": \"Bella\",\r\n            \"type\": \"DOG\",\r\n            \"description\": \"Beautiful and gentle Dalmatian\",\r\n            \"dateOfBirth\": \"2018-05-06\",\r\n            \"rating\": 7\r\n        },\r\n        {\r\n            \"name\": \"Lily\",\r\n            \"type\": \"CAT\",\r\n            \"description\": \"Sweet and playful calico cat\",\r\n            \"dateOfBirth\": \"2016-08-30\"\r\n        },\r\n        {\r\n            \"name\": \"Charlie\",\r\n            \"type\": \"DOG\",\r\n            \"description\": \"Loyal and protective German Shepherd\",\r\n            \"dateOfBirth\": \"2017-02-14\",\r\n            \"rating\": 5\r\n        }\r\n    ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/pet",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pet"
+					]
+				},
+				"description": "This is Post request for creating pets in the pet store"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/history-log",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/history-log",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"history-log"
+					]
+				},
+				"description": "This is GET request for the Bonus requirement - to retrieve the history of all the buy commands"
+			},
+			"response": []
+		}
+	]
+}
