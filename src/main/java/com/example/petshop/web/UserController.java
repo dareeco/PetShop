@@ -1,8 +1,8 @@
 package com.example.petshop.web;
 
-import com.example.petshop.model.User;
 import com.example.petshop.service.UserService;
 import com.example.petshop.web.dto.ReceiptDto;
+import com.example.petshop.web.dto.UserDto;
 import com.example.petshop.web.dto.UsersCreationListDto;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -31,7 +31,7 @@ public class UserController {
     }
 
     @GetMapping
-    public List<User> listAll() {
+    public List<UserDto> listAll() {
         return this.userService.listAll();
     }
 }

@@ -1,8 +1,9 @@
 package com.example.petshop.web;
 
-import com.example.petshop.model.Pet;
+
 import com.example.petshop.service.PetService;
 import com.example.petshop.web.dto.PetCreationListDto;
+import com.example.petshop.web.dto.PetDto;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +24,7 @@ public class PetController {
     }
 
     @GetMapping
-    public List<Pet> listAll() {
+    public List<PetDto> listAll() {
         return this.petService.listAll();
     }
 }

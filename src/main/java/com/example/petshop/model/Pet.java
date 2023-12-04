@@ -17,7 +17,7 @@ public class Pet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long Id;
+    private long id;
     @ManyToOne
     User owner;
     @Column(nullable = false)

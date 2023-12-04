@@ -4,6 +4,8 @@ import com.example.petshop.model.Pet;
 import com.example.petshop.model.PetType;
 import com.example.petshop.repository.PetRepository;
 import com.example.petshop.web.dto.PetCreationDto;
+import com.example.petshop.web.dto.PetDto;
+import com.example.petshop.web.dto.UserReadingDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,12 +22,11 @@ public class PetService {
     public void createPets(List<PetCreationDto> petCreationDtoList) {
         int numberOfAllowedPets = 20 - petRepository.findAll().size();
         List<PetCreationDto> pet20 = petCreationDtoList.subList(0, Math.min(petCreationDtoList.size(), numberOfAllowedPets));
-        pet20.forEach(el ->
-                createPet(el));
+        pet20.forEach(this::createPet);
     }
 
     public void createPet(PetCreationDto petCreationDto) {
-        Pet pet = null;
+        Pet pet;
         if (petCreationDto.getType().equals(PetType.CAT)) {
             Integer fullPrice = calculatePrice(petCreationDto.getDateOfBirth());
             pet = new Pet(petCreationDto.getName(), petCreationDto.getType(), petCreationDto.getDescription(), petCreationDto.getDateOfBirth(), fullPrice);
@@ -47,8 +48,15 @@ public class PetService {
         return calculatePrice(dateOf) + rating;
     }
 
-    public List<Pet> listAll() {
-        return petRepository.findAll();
+    public List<PetDto> listAll() {
+        return petRepository.findAll().stream()
+                .map(pet ->
+                        new PetDto(pet.getId(), pet.getName(),pet.getType(), pet.getDescription(),
+                                pet.getDateOfBirth(), pet.getPrice(), pet.getRating(),
+                        pet.getOwner() != null ? new UserReadingDto(pet.getOwner().getId(), pet.getOwner().getFirstName(),
+                                pet.getOwner().getLastName(), pet.getOwner().getEmail(),
+                                pet.getOwner().getBudget()) : null)).toList();
+
     }
 
 }

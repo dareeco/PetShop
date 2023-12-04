@@ -7,8 +7,7 @@ import com.example.petshop.model.User;
 import com.example.petshop.repository.PetRepository;
 import com.example.petshop.repository.TransactionHistoryLogRepository;
 import com.example.petshop.repository.UserRepository;
-import com.example.petshop.web.dto.ReceiptDto;
-import com.example.petshop.web.dto.UserCreationDto;
+import com.example.petshop.web.dto.*;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -27,9 +26,7 @@ public class UserService {
     public void createUsers(List<UserCreationDto> users) {
         int numberOfUsersAllowed = 10 - userRepository.findAll().size();
         List<UserCreationDto> user10 = users.subList(0, Math.min(users.size(), numberOfUsersAllowed));
-        user10.forEach(el -> {
-            createUser(el);
-        });
+        user10.forEach(this::createUser);
     }
 
     public void createUser(UserCreationDto userCreationDto) {
@@ -37,8 +34,14 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public List<User> listAll() {
-        return userRepository.findAll();
+    public List<UserDto> listAll() {
+        return userRepository.findAll().stream()
+                .map(user -> new UserDto(user.getId(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getBudget(),
+                        user.getPets().stream().filter(pet -> pet.getType().equals(PetType.DOG))
+                                .map(dog -> new DogDto(dog.getId(), dog.getName(), dog.getType(), dog.getDescription(), dog.getDateOfBirth(), dog.getPrice(), dog.getRating())).toList(),
+                        user.getPets().stream().filter(pet -> pet.getType().equals(PetType.CAT))
+                                .map(cat -> new CatDto(cat.getId(), cat.getName(), cat.getType(), cat.getDescription(), cat.getDateOfBirth(), cat.getPrice())).toList())).toList();
+
     }
 
     public ReceiptDto buyPets() {
