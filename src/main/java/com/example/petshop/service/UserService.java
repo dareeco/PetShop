@@ -27,6 +27,7 @@ public class UserService {
         int numberOfUsersAllowed = 10 - userRepository.findAll().size();
         List<UserCreationDto> user10 = users.subList(0, Math.min(users.size(), numberOfUsersAllowed));
         user10.forEach(this::createUser);
+
     }
 
     public void createUser(UserCreationDto userCreationDto) {
