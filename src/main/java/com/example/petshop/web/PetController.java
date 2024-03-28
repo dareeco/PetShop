@@ -37,4 +37,9 @@ public class PetController {
         PageRequest pr= PageRequest.of(page,size);
         return petService.listAllPageable(pr);
     }
+
+    @GetMapping("/length")
+    public Integer getLength(){
+        return petService.listLength();
+    }
 }

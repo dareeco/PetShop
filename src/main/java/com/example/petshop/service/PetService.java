@@ -66,4 +66,8 @@ public class PetService {
                         pet.getOwner().getBudget()) :null)).toList();
     }
 
+    public Integer listLength(){
+        return petRepository.findAll().size();
+    }
+
 }
