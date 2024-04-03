@@ -9,6 +9,7 @@ import com.example.petshop.repository.TransactionHistoryLogRepository;
 import com.example.petshop.repository.UserRepository;
 import com.example.petshop.web.dto.*;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -89,5 +90,15 @@ public class UserService {
             return "Woof, dog " + buyPetText(pet.getName(), user.getFirstName(), user.getLastName());
         }
     }
+
+    public List<UserDto> listAllPageable(PageRequest pr){
+        return userRepository.findAll(pr).stream().map(user -> new UserDto(user.getId(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getBudget(),
+                user.getPets().stream().filter(pet -> pet.getType().equals(PetType.DOG))
+                        .map(dog -> new DogDto(dog.getId(), dog.getName(), dog.getType(), dog.getDescription(), dog.getDateOfBirth(), dog.getPrice(), dog.getRating())).toList(),
+                user.getPets().stream().filter(pet -> pet.getType().equals(PetType.CAT))
+                        .map(cat -> new CatDto(cat.getId(), cat.getName(), cat.getType(), cat.getDescription(), cat.getDateOfBirth(), cat.getPrice())).toList())).toList();
+    }
+
+    public Integer listLength(){ return userRepository.findAll().size();}
 
 }
