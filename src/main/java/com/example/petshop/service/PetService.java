@@ -1,6 +1,8 @@
 package com.example.petshop.service;
 
 
+import com.example.petshop.model.Exceptions.InvalidPetException;
+import com.example.petshop.model.Image;
 import com.example.petshop.model.Pet;
 import com.example.petshop.model.PetType;
 import com.example.petshop.repository.PetRepository;
@@ -21,6 +23,7 @@ import java.util.List;
 @AllArgsConstructor
 public class PetService {
     private final PetRepository petRepository;
+    private final ImageService imageService;
 
     public void createPets(List<PetCreationDto> petCreationDtoList) {
         int numberOfAllowedPets = 20 - petRepository.findAll().size();
@@ -72,11 +75,13 @@ public class PetService {
         return petRepository.findAll().size();
     }
 
-    public PetDto updatePicture(Long Id, PetDto petDtoParam, MultipartFile image){
-//        Pet pet1=this.petRepository.findById(Id).orElseThrow(InvalidPetException::new);
-//        PetDto petDto=mapPetToDto(pet);
+    public Pet updatePicture(Long Id,  MultipartFile image){
+        Image img=imageService.create(image);
+        Pet pet1=this.petRepository.findById(Id).orElseThrow(InvalidPetException::new);
+        pet1.setImageData(img);
+        petRepository.save(pet1);
 
-        return null;
+        return pet1;
     }
 
 }

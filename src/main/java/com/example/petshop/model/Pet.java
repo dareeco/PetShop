@@ -34,7 +34,6 @@ public class Pet {
     Integer rating;
 
     @OneToOne
-    @Column()
     Image imageData;
 
     public Pet(String name, PetType type, String description, LocalDate dateOfBirth, Integer price, Integer rating) {

@@ -1,7 +1,6 @@
 package com.example.petshop.web;
 
 
-
 import com.example.petshop.model.Pet;
 import com.example.petshop.service.PetService;
 import com.example.petshop.web.dto.PetCreationListDto;
@@ -9,6 +8,7 @@ import com.example.petshop.web.dto.PetDto;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -45,8 +45,10 @@ public class PetController {
         return petService.listLength();
     }
 
-    @PutMapping("/edit/{id}")
-    public PetDto edit(@PathVariable Long id, @RequestPart("pet") PetDto pet, @RequestPart MultipartFile image){
-        return this.petService.updatePicture(id, pet, image);
+    @PutMapping(value = "/edit/{id}", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+    public Pet editPicture(@PathVariable Long id, @RequestPart MultipartFile image){
+        //because here we only edit the picture, we don't need the petDto otherwise we would have needed it
+        //edit(@PathVariable Long id, @RequestPart("pet") PetDto pet, @RequestPart MultipartFile image){
+        return this.petService.updatePicture(id,  image);
     }
 }

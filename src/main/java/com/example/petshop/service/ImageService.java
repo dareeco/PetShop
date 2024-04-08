@@ -25,7 +25,7 @@ public class ImageService {
     public Image create(MultipartFile multipartFile) throws RuntimeException{
         //We must use RunTimeException because otherwise we will get error of unhandled IO Exception for get Bytes
         try {
-            return new Image(this.getFileName(multipartFile), multipartFile.getBytes(), multipartFile.getContentType());
+            return this.imageRepository.save(new Image(this.getFileName(multipartFile), multipartFile.getBytes(), multipartFile.getContentType()));
         }
         catch (IOException ioException){
             throw new RuntimeException("Could not process image");
