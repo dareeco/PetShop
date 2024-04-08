@@ -2,6 +2,7 @@ package com.example.petshop.web;
 
 
 
+import com.example.petshop.model.Pet;
 import com.example.petshop.service.PetService;
 import com.example.petshop.web.dto.PetCreationListDto;
 import com.example.petshop.web.dto.PetDto;
@@ -9,6 +10,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -41,5 +43,10 @@ public class PetController {
     @GetMapping("/length")
     public Integer getLength(){
         return petService.listLength();
+    }
+
+    @PutMapping("/edit/{id}")
+    public PetDto edit(@PathVariable Long id, @RequestPart("pet") PetDto pet, @RequestPart MultipartFile image){
+        return this.petService.updatePicture(id, pet, image);
     }
 }

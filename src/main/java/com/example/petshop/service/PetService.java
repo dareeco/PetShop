@@ -1,5 +1,6 @@
 package com.example.petshop.service;
 
+
 import com.example.petshop.model.Pet;
 import com.example.petshop.model.PetType;
 import com.example.petshop.repository.PetRepository;
@@ -9,6 +10,7 @@ import com.example.petshop.web.dto.UserReadingDto;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -68,6 +70,13 @@ public class PetService {
 
     public Integer listLength(){
         return petRepository.findAll().size();
+    }
+
+    public PetDto updatePicture(Long Id, PetDto petDtoParam, MultipartFile image){
+//        Pet pet1=this.petRepository.findById(Id).orElseThrow(InvalidPetException::new);
+//        PetDto petDto=mapPetToDto(pet);
+
+        return null;
     }
 
 }

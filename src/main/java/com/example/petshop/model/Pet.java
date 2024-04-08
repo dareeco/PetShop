@@ -33,6 +33,10 @@ public class Pet {
     @Column()
     Integer rating;
 
+    @OneToOne
+    @Column()
+    Image imageData;
+
     public Pet(String name, PetType type, String description, LocalDate dateOfBirth, Integer price, Integer rating) {
         this.name = name;
         this.type = type;
@@ -48,5 +52,30 @@ public class Pet {
         this.description = description;
         this.dateOfBirth = dateOfBirth;
         this.price = price;
+    }
+
+    //Will delete those later, add them to the previous 2 constructors,
+    //Dog
+    public Pet(User owner, String name, PetType type, String description, LocalDate dateOfBirth, Integer price, Integer rating, Image imageData) {
+        this.owner = owner;
+        this.name = name;
+        this.type = type;
+        this.description = description;
+        this.dateOfBirth = dateOfBirth;
+        this.price = price;
+        this.rating = rating;
+        this.imageData = imageData;
+    }
+    //Cat
+
+
+    public Pet(User owner, String name, PetType type, String description, LocalDate dateOfBirth, Integer price, Image imageData) {
+        this.owner = owner;
+        this.name = name;
+        this.type = type;
+        this.description = description;
+        this.dateOfBirth = dateOfBirth;
+        this.price = price;
+        this.imageData = imageData;
     }
 }
