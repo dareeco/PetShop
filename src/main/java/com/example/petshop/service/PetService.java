@@ -84,4 +84,8 @@ public class PetService {
         return pet1;
     }
 
+    public Image getPetImage(long id){
+        return this.petRepository.findById(id).get().getImageData();
+    }
+
 }

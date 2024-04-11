@@ -1,14 +1,17 @@
 package com.example.petshop.web;
 
 
+import com.example.petshop.model.Image;
 import com.example.petshop.model.Pet;
 import com.example.petshop.service.PetService;
 import com.example.petshop.web.dto.PetCreationListDto;
 import com.example.petshop.web.dto.PetDto;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -50,5 +53,14 @@ public class PetController {
         //because here we only edit the picture, we don't need the petDto otherwise we would have needed it
         //edit(@PathVariable Long id, @RequestPart("pet") PetDto pet, @RequestPart MultipartFile image){
         return this.petService.updatePicture(id,  image);
+    }
+
+    @GetMapping(path = "/{id}/image")
+    public ResponseEntity<byte[]> getImage(@PathVariable long id) {
+        Image image = this.petService.getPetImage(id);
+
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + image.getName() + "\"")
+                .body(image.getData());
     }
 }
