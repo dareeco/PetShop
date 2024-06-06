@@ -3,6 +3,7 @@ package com.example.petshop.web;
 import com.example.petshop.service.UserService;
 import com.example.petshop.web.dto.ReceiptDto;
 import com.example.petshop.web.dto.UserDto;
+import com.example.petshop.web.dto.UserOwnerDto;
 import com.example.petshop.web.dto.UsersCreationListDto;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.PageRequest;
@@ -41,6 +42,12 @@ public class UserController {
     public List<UserDto> listAllPageable(@RequestParam int page, @RequestParam int size){
         PageRequest pr= PageRequest.of(page,size);
         return this.userService.listAllPageable(pr);
+    }
+
+    @GetMapping("/owners")
+    public List<UserOwnerDto> listAllOwners(@RequestParam int page, @RequestParam int size){
+        PageRequest pr= PageRequest.of(page,size);
+        return this.userService.getUsersOwningPets(pr);
     }
 
     @GetMapping("/length")

@@ -99,6 +99,10 @@ public class UserService {
                         .map(cat -> new CatDto(cat.getId(), cat.getName(), cat.getType(), cat.getDescription(), cat.getDateOfBirth(), cat.getPrice())).toList())).toList();
     }
 
+    public List<UserOwnerDto> getUsersOwningPets(PageRequest pr){
+        return userRepository.findAll(pr).stream().map(user -> new UserOwnerDto(user.getId(), user.getFirstName(), user.getLastName(), user.getPets().stream().map(pet ->  pet.getName()).toList())).toList();
+    }
+
     public Integer listLength(){ return userRepository.findAll().size();}
 
 }

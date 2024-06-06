@@ -1,0 +1,21 @@
+package com.example.petshop.web.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.List;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+public class UserOwnerDto {
+    Long Id;
+
+    String firstName;
+
+    String lastName;
+    List<String> petNames;
+}
